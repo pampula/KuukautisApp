@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">KuukautisApp</string>
+    <string name="new_entry">Lisää merkintä</string>
+    <string name="info_btn">Info</string>
+    <string name="close">Sulje</string>
+    <string name="info_text_markings">Punaiset merkinnät edustavat lisättyjä vuotopäiviä ja sininen merkintä on seuraavan kuukautisvuodon ennustettu alkamispäivä, joka perustuu edellisiin kuukautisiin.</string>
+    <string name="cycle_length_text">Kierron kesto:</string>
+    <string name="placeholder_value">Ei saatavilla</string>
+    <string name="flow_length">Vuodon kesto:</string>
+    <string name="next_flow">Seuraava vuoto:</string>
+    <string name="log_out">Kirjaudu ulos</string>
+    <string name="add_date">Lisää vuotopäivä</string>
+    <string name="days_duration">päivää</string>
+    <string name="add_to_past_error">Tällä hetkellä merkintöjä pystyy lisäämään vain tulevaisuuteen!</string>
+    <string name="delete_from_past_error">Tällä hetkellä vain uusimman merkinnän voi poistaa!</string>
+    <string name="delete_confirmation">Haluatko poistaa merkinnän päivältä</string>
+    <string name="delete">Poista</string>
+    <string name="cancel">Peruuta</string>
+    <string name="info_text_averages">Kuukautiskierron pituus ja vuodon kesto ovat keskiarvoja kolmen viimeisen täyden kiertojakson ajalta.</string>
+    <string name="info_text_deleting">Kalenterimerkinnän voi poistaa klikkaamalla sitä. Tällä hetkellä voi poistaa vain viimeisimmän merkinnän.</string>
+
+    <string name="material_calendar_monday">M</string>
+    <string name="material_calendar_tuesday">T</string>
+    <string name="material_calendar_wednesday">K</string>
+    <string name="material_calendar_thursday">T</string>
+    <string name="material_calendar_friday">P</string>
+    <string name="material_calendar_saturday">L</string>
+    <string name="material_calendar_sunday">S</string>
+
+    <array name="material_calendar_months_array">
+        <item>Tammikuu</item>
+        <item>Helmikuu</item>
+        <item>Maaliskuu</item>
+        <item>Huhtikuu</item>
+        <item>Toukokuu</item>
+        <item>Kesäkuu</item>
+        <item>Heinäkuu</item>
+        <item>Elokuu</item>
+        <item>Syyskuu</item>
+        <item>Lokakuu</item>
+        <item>Marraskuu</item>
+        <item>Joulukuu</item>
+    </array>
+
+    <string name="material_calendar_today_button">Tänään</string>
+    <string name="material_calendar_positive_button">OK</string>
+    <string name="material_calendar_negative_button">Peruuta</string>
+</resources>

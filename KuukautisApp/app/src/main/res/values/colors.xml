@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lime_green">#A2D380</color>
+    <color name="green">#599843</color>
+    <color name="dark_green">#336123</color>
+    <color name="light_beige">#E1D8BE</color>
+    <color name="beige">#BCAE85</color>
+    <color name="brown">#6C583A</color>
+    <color name="black">#100F0F</color>
+    <color name="white">#EFEEEE</color>
+    <color name="brown_red">#B36A64</color>
+    <color name="teal">#499388</color>
+    <color name="transparent">#00FFFFFF</color>
+</resources>
