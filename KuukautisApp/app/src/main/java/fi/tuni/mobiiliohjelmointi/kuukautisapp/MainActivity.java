@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.i(MAIN_TAG, "Creating a new user");
             user = new User( new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
                     null, 0, 0);
+            deployWelcomeDialog();
         }
 
         inflateCalendar();
@@ -170,6 +171,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 builder.show();
             }
         });
+    }
+
+    /**
+     * Opens a welcome pop up window for app information. Is shown to the user only on the first time
+     * the app is used.
+     */
+    private void deployWelcomeDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(R.layout.dialog_welcome)
+                .setPositiveButton(getResources().getString(R.string.close), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        builder.show();
     }
 
     /**
