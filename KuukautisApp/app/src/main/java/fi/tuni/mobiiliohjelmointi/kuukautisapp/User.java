@@ -56,6 +56,22 @@ public class User {
     }
 
     /**
+     * Returns the user's cycle lengths.
+     * @return cycleLengths List of calculated cycle lengths
+     */
+    public List<TimePeriod> getCycleLengths() {
+        return this.cycleLengths;
+    }
+
+    /**
+     * Returns the user's flow lengths.
+     * @return flowLengths List of calculated flow lengths
+     */
+    public List<TimePeriod> getFlowLengths() {
+        return this.flowLengths;
+    }
+
+    /**
      * Returns the latest prediction for the next period flow starting day.
      * @return nextFlowStartDay Prediction for the next period flow starting day
      */
@@ -77,6 +93,30 @@ public class User {
      */
     public int getFlowLengthAvg() {
         return this.flowLengthAvg;
+    }
+
+    /**
+     * Sets new markings as calendar markings.
+     * @param newMarkings New calendar markings
+     */
+    public void setCalendarMarkings(List<EventDay> newMarkings) {
+        this.calendarMarkings = newMarkings;
+    }
+
+    /**
+     * Sets new values as cycle lengths.
+     * @param newCycleLengths New cycle length values
+     */
+    public void setCycleLengths(List<TimePeriod> newCycleLengths) {
+        this.cycleLengths = newCycleLengths;
+    }
+
+    /**
+     * Sets new values as flow lengths.
+     * @param newFlowLengths New flow length values
+     */
+    public void setFlowLengths(List<TimePeriod> newFlowLengths) {
+        this.flowLengths = newFlowLengths;
     }
 
     /**

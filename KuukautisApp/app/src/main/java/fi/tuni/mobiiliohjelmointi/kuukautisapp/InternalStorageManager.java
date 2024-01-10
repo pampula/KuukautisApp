@@ -12,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.List;
 
 /**
  * Saves and retrieves data from the phone's internal storage.
@@ -20,6 +21,9 @@ import java.io.OutputStreamWriter;
 public class InternalStorageManager {
 
     private static final String FILE_NAME = "user_data.json";
+    private static final int MAX_MARKINGS_AMOUNT = 365;
+    private static final int MAX_CYCLE_LENGTHS_AMOUNT = 12;
+    private static final int MAX_FLOW_LENGTHS_AMOUNT = 12;
 
     /**
      * Checks if there is already user data saved.
@@ -53,7 +57,10 @@ public class InternalStorageManager {
      */
     public static void saveUser(Context context, User user) {
         Gson gson = createGson();
-        String json = gson.toJson(user);
+        User updatedUser = limitCalendarMarkings(user);
+        updatedUser = limitCycleLengthValues(updatedUser);
+        updatedUser = limitFlowLengthValues(updatedUser);
+        String json = gson.toJson(updatedUser);
 
         try {
             FileOutputStream fos = context.openFileOutput(FILE_NAME, Context.MODE_PRIVATE);
@@ -65,6 +72,57 @@ public class InternalStorageManager {
         catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Makes sure that the amount of calendar markings is limited to save memory.
+     * @param user User that has the calendar data
+     * @return User Updated user
+     */
+    private static User limitCalendarMarkings(User user) {
+        List<EventDay> markings = user.getCalendarMarkings();
+        int markingsAmount = markings.size();
+
+        if (markingsAmount > MAX_MARKINGS_AMOUNT) {
+            int elementsToDelete = markingsAmount - MAX_MARKINGS_AMOUNT;
+            markings.subList(0, elementsToDelete).clear();
+            user.setCalendarMarkings(markings);
+        }
+        return user;
+    }
+
+    /**
+     * Makes sure that the amount of cycle length values is limited to save memory.
+     * @param user User that has the cycle length value data
+     * @return User Updated user
+     */
+    private static User limitCycleLengthValues(User user) {
+        List<TimePeriod> values = user.getCycleLengths();
+        int valuesAmount = values.size();
+
+        if (valuesAmount > MAX_CYCLE_LENGTHS_AMOUNT) {
+            int elementsToDelete = valuesAmount - MAX_CYCLE_LENGTHS_AMOUNT;
+            values.subList(0, elementsToDelete).clear();
+            user.setCycleLengths(values);
+        }
+        return user;
+    }
+
+    /**
+     * Makes sure that the amount of flow length values is limited to save memory.
+     * @param user User that has the flow length value data
+     * @return User Updated user
+     */
+    private static User limitFlowLengthValues(User user) {
+        List<TimePeriod> values = user.getFlowLengths();
+        int valuesAmount = values.size();
+
+        if (valuesAmount > MAX_FLOW_LENGTHS_AMOUNT) {
+            int elementsToDelete = valuesAmount - MAX_FLOW_LENGTHS_AMOUNT;
+            values.subList(0, elementsToDelete).clear();
+            user.setFlowLengths(values);
+        }
+        return user;
     }
 
     /**
