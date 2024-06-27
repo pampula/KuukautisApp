@@ -1,32 +1,22 @@
-package fi.tuni.mobiiliohjelmointi.kuukautisapp;
-
-import android.content.Context;
+package fi.tuni.mobiiliohjelmointi.kuukautisapp.model.dbservice;
 
 import com.applandeo.materialcalendarview.EventDay;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.TimePeriod;
+import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.UserData;
 
 /**
  * Saves and retrieves data from the phone's internal storage.
- * This class was written with the help of ChatGPT.
  */
-public class InternalStorageManager {
+public class DataSourceImpl implements DataSource {
 
-    private static final String FILE_NAME = "user_data.json";
+    private final String FILE_NAME = "user_data.json";
+    //TODO: switch into Firebase or MongoDB (saving format a list of dates and ints for analysed values)
 
-    /**
-     * Checks if there is already user data saved.
-     * @param context Saving context
-     * @return True if there is user data available
-     */
-    public static boolean userExists(Context context) {
+    public boolean userExists(String userId) {
+        /*
         try {
             FileInputStream fis = context.openFileInput(FILE_NAME);
             int fileSize = fis.available();
@@ -36,22 +26,29 @@ public class InternalStorageManager {
         catch (IOException e) {
             return false;
         }
+        */
+        return false;
     }
 
-    /**
-     * Deletes all user data from internal storage.
-     * @param context Data saving context
-     */
-    public static void clearData(Context context) {
+    public boolean truncateUser(String userId) {
+        /*
+        // Lol let's just delete the whole thing :DDD
         context.deleteFile(FILE_NAME);
+        return true;
+         */
+        return false;
+    }
+    public boolean deleteUser(String userId) {
+        /*
+        context.deleteFile(FILE_NAME);
+        return true;
+
+         */
+        return false;
     }
 
-    /**
-     * Saves user data to internal storage.
-     * @param context Saving context
-     * @param user User object to be saved
-     */
-    public static void saveUser(Context context, User user) {
+    public boolean saveUserData(UserData user) {
+        /*
         Gson gson = createGson();
         String json = gson.toJson(user);
 
@@ -64,17 +61,19 @@ public class InternalStorageManager {
 
         catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
+        return true;
+
+         */
+        return false;
     }
 
-    /**
-     * Fetches user data from internal storage and builds User object.
-     * @param context Saving context
-     * @return User Fetched user data
-     */
-    public static User loadUser(Context context) {
+
+    public UserData getUserData(String userId) {
+        /*
         Gson gson = createGson();
-        User user = null;
+        UserData user = null;
 
         try {
             FileInputStream fis = context.openFileInput(FILE_NAME);
@@ -89,7 +88,7 @@ public class InternalStorageManager {
             br.close();
 
             String json = jsonBuilder.toString();
-            user = gson.fromJson(json, User.class);
+            user = gson.fromJson(json, UserData.class);
         }
 
         catch (IOException e) {
@@ -97,13 +96,15 @@ public class InternalStorageManager {
         }
 
         return user;
+         */
+        return null;
     }
 
     /**
      * Generates Gson builder that can handle custom EventDay and TimePeriod types.
      * @return Gson Gson builder
      */
-    private static Gson createGson() {
+    private Gson createGson() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(EventDay.class, new EventDayTypeAdapter());
         gsonBuilder.registerTypeAdapter(TimePeriod.class, new TimePeriodTypeAdapter());
