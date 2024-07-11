@@ -7,6 +7,9 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.R;
 
+/**
+ * View for the landing of the application. Contains paths to login and registration.
+ */
 public class StartActivity extends AppCompatActivity {
 
     @Override

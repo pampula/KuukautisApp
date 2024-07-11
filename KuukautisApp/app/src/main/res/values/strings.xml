@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">KuukautisApp</string>
+    <string name="registration">Rekisteröityminen</string>
+    <string name="email">Sähköposti</string>
+    <string name="password">Salasana</string>
+    <string name="register">Rekisteröidy</string>
+    <string name="login">Kirjaudu sisään</string>
+    <string name="missing_fields">Täytä kaikki kentät!</string>
+    <string name="invalid_email">Sähköposti ei ole validi!</string>
+    <string name="invalid_password">Salasanassa pitää olla ainakin 8 merkkiä!</string>
+
+    <string name="welcome_message">Tervetuloa käyttämään KuukautisAppia!</string>
+    <string name="flow_circle_description">Kirjattu kuukautisten vuotopäivä</string>
+    <string name="prediction_circle_description">Seuraavan kuukautisvuodon ennustettu alkamispäivä</string>
+    <string name="general_app_info">Sovelluksella voit seurata kuukautiskiertoasi ja ennustaa seuraavan kierron alkamispäivän. Kuukautisvuotopäiviä kirjataan kalenteriin, minkä perusteella sovellus generoi statistiikkaa ja ennusteen kuukautisten käyttäytymisestä.</string>
+
     <string name="new_entry">Lisää merkintä</string>
     <string name="info_btn">Info</string>
     <string name="close">Sulje</string>
@@ -11,8 +25,6 @@
     <string name="log_out">Kirjaudu ulos</string>
     <string name="add_date">Lisää vuotopäivä</string>
     <string name="days_duration">päivää</string>
-    <string name="add_to_past_error">Tällä hetkellä merkintöjä pystyy lisäämään vain tulevaisuuteen!</string>
-    <string name="delete_from_past_error">Tällä hetkellä vain uusimman merkinnän voi poistaa!</string>
     <string name="delete_confirmation">Haluatko poistaa merkinnän päivältä</string>
     <string name="delete">Poista</string>
     <string name="cancel">Peruuta</string>
@@ -45,13 +57,7 @@
     <string name="material_calendar_today_button">Tänään</string>
     <string name="material_calendar_positive_button">OK</string>
     <string name="material_calendar_negative_button">Peruuta</string>
-    <string name="welcome_message">Tervetuloa käyttämään KuukautisAppia!</string>
-    <string name="flow_circle_description">Kirjattu kuukautisten vuotopäivä</string>
-    <string name="prediction_circle_description">Seuraavan kuukautisvuodon ennustettu alkamispäivä</string>
-    <string name="general_app_info">Sovelluksella voit seurata kuukautiskiertoasi ja ennustaa seuraavan kierron alkamispäivän. Kuukautisvuotopäiviä kirjataan kalenteriin, minkä perusteella sovellus generoi statistiikkaa ja ennusteen kuukautisten käyttäytymisestä.</string>
-    <string name="registration">Rekisteröityminen</string>
-    <string name="email">Sähköposti</string>
-    <string name="password">Salasana</string>
-    <string name="register">Rekisteröidy</string>
-    <string name="login">Kirjaudu sisään</string>
+    <string name="registration_successful">Rekisteröinti onnistui!</string>
+    <string name="registeration_unsuccesful">Rekisteröinti epäonnistui!</string>
+    <string name="back">Takaisin</string>
 </resources>
