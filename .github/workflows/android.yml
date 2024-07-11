@@ -21,4 +21,5 @@ jobs:
         cache: gradle
 
     - name: Build with Gradle
-      run: gradle build
+      run: ./gradlew build
+      working-directory: KuukautisApp
