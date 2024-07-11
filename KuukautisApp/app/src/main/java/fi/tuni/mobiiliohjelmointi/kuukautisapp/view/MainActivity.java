@@ -7,14 +7,21 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.R;
+import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.AuthService;
+import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.AuthServiceFirebaseImpl;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.cycleservice.CycleService;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.cycleservice.CycleServiceImpl;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.CycleData;
+import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.UserData;
+import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.dbservice.DBService;
+import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.dbservice.DBServiceImpl;
 
 /**
  * Runs a calendar app for logging a menstrual cycle.
@@ -25,19 +32,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Dialog infoDialog;
     private ImageButton infoBtn;
     private CycleService cycleService;
+    private DBService dbService;
+    private AuthService authService;
+
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //TODO: retrieve user from data source or create new user
-        //user = new UserData("Test user", "Tester", new Settings(), new CycleData());
+        dbService = new DBServiceImpl();
+        authService = new AuthServiceFirebaseImpl();
+        cycleService = new CycleServiceImpl(new CycleData());
 
-        this.cycleService = new CycleServiceImpl(new CycleData());
+        userId = getCurrentUserId();
 
-        loadFragment(new CalendarFragment(cycleService), R.id.fragment_container_calendar);
-        loadFragment(new CycleInfoFragment(cycleService), R.id.fragment_container_cycle_info);
+        if (userId != null) {
+            dbService.loadUser(userId, new DBService.DBServiceCallback<UserData>() {
+                @Override
+                public void onSuccess(UserData userData) {
+                    cycleService = new CycleServiceImpl(userData.getCycleData());
+                    loadFragment(new CalendarFragment(cycleService), R.id.fragment_container_calendar);
+                    loadFragment(new CycleInfoFragment(cycleService), R.id.fragment_container_cycle_info);
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    showError("Error loading user: " + e.getMessage());
+                }
+            });
+        } else {
+            // If no user is logged in, redirect to the start screen
+            startActivity(new Intent(this, StartActivity.class));
+            finish();
+        }
 
         infoDialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar);
         infoBtn = findViewById(R.id.btn_info);
@@ -45,6 +74,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         deployWelcomeDialog();
 
+    }
+
+    /**
+     * Shows error message Toast with given text.
+     * @param message error message
+     */
+    private void showError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    private String getCurrentUserId() {
+        // TODO: Implement logic to get the current user ID, e.g., from shared preferences or Firebase Auth
+        return "exampleUserId";
     }
 
     /**
@@ -102,8 +144,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStop() {
         super.onStop();
-        /*
-        DBService.saveUser;
-         */
+        dbService.saveUser(new DBService.DBServiceCallback<Boolean>() {
+            @Override
+            public void onSuccess(Boolean result) {
+                // Handle success
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                showError("Error saving user data: " + e.getMessage());
+            }
+        });
     }
 }

@@ -13,6 +13,9 @@ public class UserData {
     private Settings settings;
     private CycleData cycleData;
 
+    public UserData() {
+
+    }
 
     /**
      * Constructor for a user.
@@ -30,10 +33,6 @@ public class UserData {
 
     public String getUserId() {
         return this.userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getUserName() {
@@ -58,9 +57,5 @@ public class UserData {
 
     public void setCycleData(CycleData cycleData) {
         this.cycleData = cycleData;
-    }
-
-    public void updateCycleMenstruationDays(ArrayList<Date> menstrualDays) {
-        this.cycleData.setMenstrualDays(menstrualDays);
     }
 }

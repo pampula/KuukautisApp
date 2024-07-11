@@ -17,14 +17,12 @@ public class CycleData {
     private int menstruationLengthAvg;
     private final int GENERAL_CYCLE_LENGTH = 28;
 
-    public CycleData(ArrayList<Date> menstrualDays, ArrayList<Date> predictionDays,
+    public CycleData(ArrayList<Date> menstrualDays,
                      int cycleLengthAvg, int menstruationLengthAvg) {
         this.menstrualDays = menstrualDays;
         this.menstrualDaysSet = new HashSet<>(menstrualDays);
-        this.predictionDays = predictionDays;
         this.cycleLengthAvg = cycleLengthAvg;
         this.menstruationLengthAvg = menstruationLengthAvg;
-        calculateAverages();
         calculatePredictions();
     }
 

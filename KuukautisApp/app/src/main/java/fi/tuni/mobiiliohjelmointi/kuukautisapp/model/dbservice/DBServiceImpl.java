@@ -2,40 +2,40 @@ package fi.tuni.mobiiliohjelmointi.kuukautisapp.model.dbservice;
 
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.UserData;
 
-public class DBServiceImpl implements DBService{
+public class DBServiceImpl implements DBService {
     private final DataSource dataSource;
 
     public DBServiceImpl() {
-        this.dataSource = new DataSourceImpl();
+        this.dataSource = new DataSourceFirestoreImpl();
     }
 
     @Override
-    public boolean userExists(String userId) {
-        return this.dataSource.userExists(userId);
+    public void userExists(String userId, DBServiceCallback<Boolean> callback) {
+        this.dataSource.userExists(userId, callback);
     }
 
     @Override
-    public boolean addUser(UserData newUser) {
-        return this.dataSource.saveUserData(newUser);
+    public void addUser(UserData newUser, DBServiceCallback<Boolean> callback) {
+        this.dataSource.saveUserData(newUser, callback);
     }
 
     @Override
-    public UserData loadUser(String userId) {
-        return this.dataSource.getUserData(userId);
+    public void loadUser(String userId, DBServiceCallback<UserData> callback) {
+        this.dataSource.getUserData(userId, callback);
     }
 
     @Override
-    public boolean saveUser(UserData userdata) {
-        return this.dataSource.saveUserData(userdata);
+    public void saveUser(UserData userdata, DBServiceCallback<Boolean> callback) {
+        this.dataSource.saveUserData(userdata, callback);
     }
 
     @Override
-    public boolean deleteUser(String userId) {
-        return this.dataSource.deleteUser(userId);
+    public void deleteUser(String userId, DBServiceCallback<Boolean> callback) {
+        this.dataSource.deleteUser(userId, callback);
     }
 
     @Override
-    public boolean resetUser(String userId) {
-        return this.dataSource.truncateUser(userId);
+    public void resetUser(String userId, DBServiceCallback<Boolean> callback) {
+        this.dataSource.truncateUser(userId, callback);
     }
 }

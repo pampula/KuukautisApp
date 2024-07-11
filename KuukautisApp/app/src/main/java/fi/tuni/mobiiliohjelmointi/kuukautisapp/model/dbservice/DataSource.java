@@ -6,10 +6,10 @@ import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.UserData;
  * Handles the database connection and operations.
  */
 public interface DataSource {
-    boolean userExists(String userId);
-    UserData getUserData(String userId);
-    boolean saveUserData(UserData user);
-    boolean deleteUser(String userId);
-    boolean truncateUser(String userId);
+    void userExists(String userId, DBService.DBServiceCallback<Boolean> callback);
+    void saveUserData(UserData userData, DBService.DBServiceCallback<Boolean> callback);
+    void getUserData(String userId, DBService.DBServiceCallback<UserData> callback);
+    void deleteUser(String userId, DBService.DBServiceCallback<Boolean> callback);
+    void truncateUser(String userId, DBService.DBServiceCallback<Boolean> callback);
 
 }

@@ -1,0 +1,40 @@
+<mxfile host="app.diagrams.net" modified="2024-05-19T15:45:59.006Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0" etag="3FmmYFbtFOIig1WFgIFR" version="24.4.3" type="device">
+  <diagram name="Sivu-1" id="J280ov5xPUAZnp_QVGc4">
+    <mxGraphModel dx="1463" dy="791" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ioOKT7jG9Jb3fq906OSb-1" value="&lt;div&gt;&amp;lt;&amp;lt;execution environment&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Android&lt;/b&gt;&lt;br&gt;&lt;/div&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;size=10;rotation=0;" vertex="1" parent="1">
+          <mxGeometry x="530" y="250" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ioOKT7jG9Jb3fq906OSb-2" value="&lt;div&gt;&amp;lt;&amp;lt;cloud storage&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Firebase&lt;/b&gt;&lt;br&gt;&lt;/div&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;size=10;rotation=0;" vertex="1" parent="1">
+          <mxGeometry x="180" y="60" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ioOKT7jG9Jb3fq906OSb-5" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="570" y="70" width="130" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ioOKT7jG9Jb3fq906OSb-3" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.mobile_client;fillColor=#1A1A1A;gradientColor=none;" vertex="1" parent="ioOKT7jG9Jb3fq906OSb-5">
+          <mxGeometry x="39.75" y="30" width="50.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ioOKT7jG9Jb3fq906OSb-4" value="&amp;lt;&amp;lt;mobile device&amp;gt;&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="ioOKT7jG9Jb3fq906OSb-5">
+          <mxGeometry width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ioOKT7jG9Jb3fq906OSb-6" value="&lt;div&gt;&amp;lt;&amp;lt;Android application&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;MenstrualApp.apk&lt;/b&gt;&lt;br&gt;&lt;/div&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;size=10;rotation=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="210" width="260" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="ioOKT7jG9Jb3fq906OSb-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=40;entryPerimeter=0;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="ioOKT7jG9Jb3fq906OSb-6" target="ioOKT7jG9Jb3fq906OSb-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ioOKT7jG9Jb3fq906OSb-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="ioOKT7jG9Jb3fq906OSb-1" target="ioOKT7jG9Jb3fq906OSb-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ioOKT7jG9Jb3fq906OSb-14" value="&amp;lt;&amp;lt;deploy&amp;gt;&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="410" y="260" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ioOKT7jG9Jb3fq906OSb-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=125;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="ioOKT7jG9Jb3fq906OSb-2" target="ioOKT7jG9Jb3fq906OSb-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
