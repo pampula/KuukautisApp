@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStop() {
         super.onStop();
+        /*
         dbService.saveUser(new DBService.DBServiceCallback<Boolean>() {
             @Override
             public void onSuccess(Boolean result) {
@@ -154,6 +155,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onFailure(Exception e) {
                 showError("Error saving user data: " + e.getMessage());
             }
-        });
+        });*/
     }
 }
