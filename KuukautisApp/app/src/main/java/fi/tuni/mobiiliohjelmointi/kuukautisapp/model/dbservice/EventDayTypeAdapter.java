@@ -1,5 +1,8 @@
-package fi.tuni.mobiiliohjelmointi.kuukautisapp;
+package fi.tuni.mobiiliohjelmointi.kuukautisapp.model.dbservice;
 
+import android.annotation.SuppressLint;
+
+import com.applandeo.materialcalendarview.EventDay;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -14,49 +17,65 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import fi.tuni.mobiiliohjelmointi.kuukautisapp.R;
+
 /**
- * Serializes TimePeriod object to Json and deserializes it to the correct type.
+ * Serializes EventDay object to Json and deserializes it to the correct type.
  * This class was written with the help of ChatGPT.
  */
-public class TimePeriodTypeAdapter implements JsonSerializer<TimePeriod>, JsonDeserializer<TimePeriod> {
+public class EventDayTypeAdapter implements JsonSerializer<EventDay>, JsonDeserializer<EventDay> {
     private static final String DATE_FORMAT = "dd-MM-yyyy";
-    private static final String JSON_FIELD_LENGTH = "length";
-    private static final String JSON_FIELD_FIRST_DAY = "firstDay";
-    private static final String JSON_FIELD_LAST_DAY = "lastDay";
+    private static final String FLOW_TYPE = "flow";
+    private static final String PREDICTION_TYPE = "prediction";
+    private static final String JSON_FIELD_DATE = "date";
+    private static final String JSON_FIELD_DRAWABLE_TYPE = "drawableType";
 
     /**
-     * Serializes TimePeriod object to Json.
-     * @param src The object that needs to be converted to Json
-     * @param typeOfSrc The actual type (fully genericized version) of the source object
+     * Serializes EventDay object to Json.
+     * @param src the object that needs to be converted to Json
+     * @param typeOfSrc the actual type (fully generalized version) of the source object
      * @param context Json serialization context
      * @return JsonElement Produced Json element
      */
     @Override
-    public JsonElement serialize(TimePeriod src, Type typeOfSrc, JsonSerializationContext context) {
+    public JsonElement serialize(EventDay src, Type typeOfSrc, JsonSerializationContext context) {
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty(JSON_FIELD_LENGTH, src.getLength());
-        jsonObject.addProperty(JSON_FIELD_FIRST_DAY, formatDate(src.getFirstDay()));
-        jsonObject.addProperty(JSON_FIELD_LAST_DAY, formatDate(src.getLastDay()));
+        jsonObject.addProperty(JSON_FIELD_DATE, formatDate(src.getCalendar()));
+        @SuppressLint("RestrictedApi") Object drawableType = src.getImageDrawable();
+        if (drawableType.equals(R.drawable.circle_flow)) {
+            jsonObject.addProperty(JSON_FIELD_DRAWABLE_TYPE, FLOW_TYPE);
+        }
+        else {
+            jsonObject.addProperty(JSON_FIELD_DRAWABLE_TYPE, PREDICTION_TYPE);
+        }
+
         return jsonObject;
     }
 
     /**
-     * Deserializes Json element to TimePeriod object.
+     * Deserializes Json element to EventDay object.
      * @param json The Json data being deserialized
      * @param typeOfT The type of the Object to deserialize to
      * @param context Json serialization context
-     * @return TimePeriod Produced TimePeriod object
+     * @return EventDay Produced EventDay object
      * @throws JsonParseException
      */
     @Override
-    public TimePeriod deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+    public EventDay deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
             throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
-        int length = jsonObject.get(JSON_FIELD_LENGTH).getAsInt();
-        Calendar firstDay = parseDate(jsonObject.get(JSON_FIELD_FIRST_DAY).getAsString());
-        Calendar lastDay = parseDate(jsonObject.get(JSON_FIELD_LAST_DAY).getAsString());
+        Calendar date = parseDate(jsonObject.get(JSON_FIELD_DATE).getAsString());
+        String drawableType = jsonObject.get(JSON_FIELD_DRAWABLE_TYPE).getAsString();
+        EventDay eventDay;
 
-        return new TimePeriod(length, firstDay, lastDay);
+        if(drawableType.equals(FLOW_TYPE)) {
+            eventDay = new EventDay(date, R.drawable.circle_flow);
+        }
+        else {
+            eventDay = new EventDay(date, R.drawable.circle_prediction);
+        }
+
+        return eventDay;
     }
 
     /**
@@ -84,6 +103,7 @@ public class TimePeriodTypeAdapter implements JsonSerializer<TimePeriod>, JsonDe
         catch (ParseException e) {
             e.printStackTrace();
         }
+
         return calendar;
     }
 }

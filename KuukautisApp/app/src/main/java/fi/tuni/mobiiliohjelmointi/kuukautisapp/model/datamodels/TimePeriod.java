@@ -1,4 +1,4 @@
-package fi.tuni.mobiiliohjelmointi.kuukautisapp;
+package fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels;
 
 import java.util.Calendar;
 
@@ -13,8 +13,8 @@ public class TimePeriod {
 
     /**
      * Default constructor for a time period.
-     * @param length Length in days
-     * @param lastDay Last day of time period
+     * @param length length in days
+     * @param lastDay last day of time period
      */
     public TimePeriod(int length, Calendar firstDay, Calendar lastDay) {
         this.length = length;
@@ -32,7 +32,7 @@ public class TimePeriod {
 
     /**
      * Returns time period's first day.
-     * @return Time period's first day
+     * @return time period's first day
      */
     public Calendar getFirstDay() {
         return this.firstDay;
@@ -40,7 +40,7 @@ public class TimePeriod {
 
     /**
      * Returns time period's last day.
-     * @return Time period's last day
+     * @return time period's last day
      */
     public Calendar getLastDay() {
         return this.lastDay;
@@ -55,7 +55,7 @@ public class TimePeriod {
 
     /**
      * Sets the time period's last day
-     * @param lastDay Time period's last day
+     * @param lastDay time period's last day
      */
     public void setLastDay(Calendar lastDay) {
         this.lastDay = lastDay;
@@ -63,7 +63,7 @@ public class TimePeriod {
 
     /**
      * Sets the time period's first day
-     * @param firstDay Time period's first day
+     * @param firstDay time period's first day
      */
     public void setFirstDay(Calendar firstDay) {
         this.firstDay = firstDay;
@@ -71,7 +71,7 @@ public class TimePeriod {
 
     /**
      * Sets the time period's length
-     * @param amount Amount to set as length
+     * @param amount amount to set as length
      */
     public void setLength(int amount) {
         this.length = amount;
