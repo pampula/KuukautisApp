@@ -1,5 +1,7 @@
 package fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice;
 
+import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.UserData;
+
 /**
  * Service for handling user registration, login and logout.
  */
@@ -26,6 +28,12 @@ public interface AuthService {
      * @param callback logout's success
      */
     void logoutUser(AuthServiceCallback<Boolean> callback);
+
+    /**
+     * Gets the current logged in user's id. Returns null if there is no logged in user.
+     * @return user id
+     */
+    String getCurrentUserId();
 
     /**
      * Callback message of the authorization's success.

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.R;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.AuthService;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.AuthServiceFirebaseImpl;
+import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.UserLogin;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.cycleservice.CycleService;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.cycleservice.CycleServiceImpl;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.CycleData;
@@ -46,9 +47,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         authService = new AuthServiceFirebaseImpl();
         cycleService = new CycleServiceImpl(new CycleData());
 
-        userId = getCurrentUserId();
+        userId = authService.getCurrentUserId();
 
-        if (userId != null) {
+        if (UserLogin.getInstance().isLoggedIn()) {
+            userId = UserLogin.getInstance().getUserId();
             dbService.loadUser(userId, new DBService.DBServiceCallback<UserData>() {
                 @Override
                 public void onSuccess(UserData userData) {
@@ -59,10 +61,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 @Override
                 public void onFailure(Exception e) {
-                    showError("Error loading user: " + e.getMessage());
+                    Toast.makeText(getApplicationContext(), R.string.data_load_error, Toast.LENGTH_LONG).show();
+                    cycleService = new CycleServiceImpl(new CycleData());
+                    loadFragment(new CalendarFragment(cycleService), R.id.fragment_container_calendar);
+                    loadFragment(new CycleInfoFragment(cycleService), R.id.fragment_container_cycle_info);
                 }
             });
-        } else {
+        }
+        else {
             // If no user is logged in, redirect to the start screen
             startActivity(new Intent(this, StartActivity.class));
             finish();
@@ -72,8 +78,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         infoBtn = findViewById(R.id.btn_info);
         infoBtn.setOnClickListener(this);
 
-        deployWelcomeDialog();
-
+        if (cycleService.getMenstrualDays().isEmpty()) {
+            deployWelcomeDialog();
+        }
     }
 
     /**
@@ -82,11 +89,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-    }
-
-    private String getCurrentUserId() {
-        // TODO: Implement logic to get the current user ID, e.g., from shared preferences or Firebase Auth
-        return "exampleUserId";
     }
 
     /**
@@ -144,17 +146,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStop() {
         super.onStop();
-        /*
-        dbService.saveUser(new DBService.DBServiceCallback<Boolean>() {
-            @Override
-            public void onSuccess(Boolean result) {
-                // Handle success
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                showError("Error saving user data: " + e.getMessage());
-            }
-        });*/
+        //TODO tallennus ja kirjautuminen ulos
     }
 }

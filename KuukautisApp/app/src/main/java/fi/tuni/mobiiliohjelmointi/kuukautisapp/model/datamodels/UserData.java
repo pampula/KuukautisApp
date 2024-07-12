@@ -14,7 +14,6 @@ public class UserData {
     private CycleData cycleData;
 
     public UserData() {
-
     }
 
     /**

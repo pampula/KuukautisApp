@@ -18,7 +18,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_gravity="start"
-            android:src="@drawable/logout_foreground"
+            android:src="@drawable/back_foreground"
             android:background="@android:color/transparent"
             android:contentDescription="@string/log_out" />
 

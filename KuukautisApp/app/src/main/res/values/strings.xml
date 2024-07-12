@@ -60,4 +60,6 @@
     <string name="registration_successful">Rekisteröinti onnistui!</string>
     <string name="registeration_unsuccesful">Rekisteröinti epäonnistui!</string>
     <string name="back">Takaisin</string>
+    <string name="login_unsuccessful">Kirjautuminen epäonnistui!</string>
+    <string name="data_load_error">Virhe tietojen latauksessa!</string>
 </resources>

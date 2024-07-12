@@ -1,14 +1,10 @@
 package fi.tuni.mobiiliohjelmointi.kuukautisapp.model.dbservice;
 
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.CycleData;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.UserData;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import androidx.annotation.NonNull;
 
 public class DataSourceFirestoreImpl implements DataSource {
     private final FirebaseFirestore db;

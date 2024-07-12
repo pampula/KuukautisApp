@@ -15,7 +15,6 @@ import java.util.regex.Pattern;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.R;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.presenter.RegistrationContract;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.presenter.RegistrationPresenter;
-import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.AuthServiceFirebaseImpl;
 
 /**
  * View for handling the user registration process.
@@ -42,7 +41,7 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
         registerButton = findViewById(R.id.registerButton);
         backButton = findViewById(R.id.btn_back);
 
-        presenter = new RegistrationPresenter(this, new AuthServiceFirebaseImpl());
+        presenter = new RegistrationPresenter(this);
         context = this;
 
         backButton.setOnClickListener(v -> {
@@ -55,7 +54,7 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
             String email = emailEditText.getText().toString();
             String password = passwordEditText.getText().toString();
 
-            if (email.equals("") || password.equals("")) {
+            if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(context, R.string.missing_fields, Toast.LENGTH_LONG).show();
                 return;
             }
