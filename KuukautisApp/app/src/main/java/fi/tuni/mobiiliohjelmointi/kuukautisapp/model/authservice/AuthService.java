@@ -1,7 +1,5 @@
 package fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice;
 
-import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.UserData;
-
 /**
  * Service for handling user registration, login and logout.
  */

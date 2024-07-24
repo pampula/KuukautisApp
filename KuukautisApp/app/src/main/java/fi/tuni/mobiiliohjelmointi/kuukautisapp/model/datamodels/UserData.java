@@ -1,7 +1,5 @@
 package fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels;
 
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Represents a user. Contains their information, app data and settings.
@@ -56,5 +54,10 @@ public class UserData {
 
     public void setCycleData(CycleData cycleData) {
         this.cycleData = cycleData;
+    }
+
+    public void resetData() {
+        this.settings = new Settings();
+        this.cycleData = new CycleData();
     }
 }

@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.R;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.AuthService;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.AuthServiceFirebaseImpl;
-import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.UserLogin;
+import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.UserLoginSingleton;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.cycleservice.CycleService;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.cycleservice.CycleServiceImpl;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.CycleData;
@@ -48,39 +49,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cycleService = new CycleServiceImpl(new CycleData());
 
         userId = authService.getCurrentUserId();
-
-        if (UserLogin.getInstance().isLoggedIn()) {
-            userId = UserLogin.getInstance().getUserId();
-            dbService.loadUser(userId, new DBService.DBServiceCallback<UserData>() {
-                @Override
-                public void onSuccess(UserData userData) {
-                    cycleService = new CycleServiceImpl(userData.getCycleData());
-                    loadFragment(new CalendarFragment(cycleService), R.id.fragment_container_calendar);
-                    loadFragment(new CycleInfoFragment(cycleService), R.id.fragment_container_cycle_info);
-                }
-
-                @Override
-                public void onFailure(Exception e) {
-                    Toast.makeText(getApplicationContext(), R.string.data_load_error, Toast.LENGTH_LONG).show();
-                    cycleService = new CycleServiceImpl(new CycleData());
-                    loadFragment(new CalendarFragment(cycleService), R.id.fragment_container_calendar);
-                    loadFragment(new CycleInfoFragment(cycleService), R.id.fragment_container_cycle_info);
-                }
-            });
+        if (userId != null && !userId.isEmpty()) {
+            Log.d("MAIN", "Loading current user, id: " + userId);
+            loadUserData(userId);
         }
         else {
-            // If no user is logged in, redirect to the start screen
-            startActivity(new Intent(this, StartActivity.class));
-            finish();
+            Log.d("MAIN", "userId is null or empty, redirecting to start");
+            redirectToStartScreen();
         }
 
         infoDialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar);
         infoBtn = findViewById(R.id.btn_info);
         infoBtn.setOnClickListener(this);
+    }
 
-        if (cycleService.getMenstrualDays().isEmpty()) {
-            deployWelcomeDialog();
-        }
+    /**
+     * Fetches and loads the user data from DBService.
+     * @param userId user to load
+     */
+    private void loadUserData(String userId) {
+        dbService.loadUser(userId, new DBService.DBServiceCallback<UserData>() {
+            @Override
+            public void onSuccess(UserData userData) {
+                cycleService = new CycleServiceImpl(userData.getCycleData());
+                loadFragment(new CalendarFragment(cycleService), R.id.fragment_container_calendar);
+                loadFragment(new CycleInfoFragment(cycleService), R.id.fragment_container_cycle_info);
+
+                if (cycleService.getMenstrualDays().isEmpty()) {
+                    deployWelcomeDialog();
+                }
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                showError(getString(R.string.data_load_error));
+                cycleService = new CycleServiceImpl(new CycleData());
+                loadFragment(new CalendarFragment(cycleService), R.id.fragment_container_calendar);
+                loadFragment(new CycleInfoFragment(cycleService), R.id.fragment_container_cycle_info);
+            }
+        });
+    }
+
+    /**
+     * Starts the app's start screen.
+     */
+    private void redirectToStartScreen() {
+        startActivity(new Intent(this, StartActivity.class));
+        finish();
     }
 
     /**
@@ -146,6 +161,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStop() {
         super.onStop();
-        //TODO tallennus ja kirjautuminen ulos
+
+        dbService.saveUser(new DBService.DBServiceCallback<Boolean>() {
+            @Override
+            public void onSuccess(Boolean result) {
+                Log.i("SAVING", "User saved");
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.e("SAVING", String.valueOf(e));
+            }
+        });
+
+        authService.logoutUser(new AuthService.AuthServiceCallback<Boolean>() {
+            @Override
+            public void onSuccess(Boolean result) {
+                Log.i("LOGOUT", "User logout");
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.e("LOGOUT", String.valueOf(e));
+            }
+        });
     }
 }

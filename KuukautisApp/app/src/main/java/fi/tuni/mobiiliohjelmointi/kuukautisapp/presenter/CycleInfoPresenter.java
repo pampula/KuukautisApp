@@ -23,7 +23,7 @@ public class CycleInfoPresenter implements CycleInfoContract.Presenter, Menstrua
         int menstruationLengthAvg = cycleService.getMenstruationLengthAvg();
         Date nextFlowStartDay;
         ArrayList<Date> predictions = cycleService.getPredictionDays();
-        if (predictions.size() == 0) {
+        if (predictions.isEmpty()) {
             nextFlowStartDay = null;
         }
         else {

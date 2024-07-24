@@ -1,25 +1,24 @@
 package fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice;
 
-import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.UserData;
 
 /**
  * Singleton class for having only one logged in user.
  */
-public class UserLogin {
+public class UserLoginSingleton {
 
-    private static UserLogin instance;
+    private static UserLoginSingleton instance;
     private String userId;
     private boolean isLoggedIn;
 
-    private UserLogin() {}
+    private UserLoginSingleton() {}
 
     /**
      * Gets the singleton instance.
      * @return user login instance
      */
-    public static synchronized UserLogin getInstance() {
+    public static synchronized UserLoginSingleton getInstance() {
         if (instance == null) {
-            instance = new UserLogin();
+            instance = new UserLoginSingleton();
         }
         return instance;
     }

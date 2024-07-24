@@ -5,6 +5,7 @@ import java.util.Date;
 
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.CycleData;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.MenstrualDayObserver;
+import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.usermanager.UserManagerSingleton;
 
 public class CycleServiceImpl implements CycleService{
 
@@ -53,12 +54,14 @@ public class CycleServiceImpl implements CycleService{
     public void addMenstrualDay(Date menstrualDay) {
         this.cycleData.addMenstrualDay(menstrualDay);
         notifyObservers();
+        UserManagerSingleton.getInstance().updateCycleData(this.cycleData);
     }
 
     @Override
     public void removeMenstrualDay(Date menstrualDay) {
         this.cycleData.removeMenstrualDay(menstrualDay);
         notifyObservers();
+        UserManagerSingleton.getInstance().updateCycleData(this.cycleData);
     }
 
     @Override
