@@ -1,0 +1,13 @@
+TALLENNETAAN TIETOKANTAAN:
+UserData {
+	String userId (generoitu)
+	String userName
+	Settings {
+		(tyhjä aluksi, rakenne tulee olemaan samankaltainen kuin cycledata)
+	}
+	CycleData {
+		ArrayList<Date> menstrualDays
+		int cycleLengthAvg
+		int menstruationLengthAvg
+	}
+}

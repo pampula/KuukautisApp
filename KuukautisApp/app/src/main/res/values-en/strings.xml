@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MenstrualApp</string>
+    <string name="registration">Registration</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="missing_fields">Fill all fields!</string>
+    <string name="invalid_email">Email is not valid!</string>
+    <string name="invalid_password">Password needs to be at least 8 characters long!</string>
+    <string name="registration_successful">Registration successful!</string>
+    <string name="registeration_unsuccesful">Registration failed!</string>
+    <string name="back">Back</string>
+
+    <string name="welcome_message">Welcome to MenstrualApp!</string>
+    <string name="flow_circle_description">Logged period flow day</string>
+    <string name="prediction_circle_description">Predicted date for the start of the next menstrual flow</string>
+    <string name="general_app_info">With the app, you can follow your periods and predict the start of the next menstrual flow. Flow days are logged into a calendar, from which the app generates statistics and a prediction on the periods.</string>
+
     <string name="new_entry">New entry</string>
     <string name="info_btn">Info</string>
     <string name="close">Close</string>
@@ -12,8 +29,6 @@
     <string name="log_out">Log out</string>
     <string name="add_date">Add flow day</string>
     <string name="days_duration">days</string>
-    <string name="add_to_past_error">At the moment, markings can be only added to the future!</string>
-    <string name="delete_from_past_error">At the moment, only the most recent marking can be removed!</string>
     <string name="delete_confirmation">Do you want to remove marking on</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
@@ -46,8 +61,6 @@
     <string name="material_calendar_today_button">Today</string>
     <string name="material_calendar_positive_button">OK</string>
     <string name="material_calendar_negative_button">Cancel</string>
-    <string name="welcome_message">Welcome to MenstrualApp!</string>
-    <string name="flow_circle_description">Logged period flow day</string>
-    <string name="prediction_circle_description">Predicted date for the start of the next menstrual flow</string>
-    <string name="general_app_info">With the app, you can follow your periods and predict the start of the next menstrual flow. Flow days are logged into a calendar, from which the app generates statistics and a prediction on the periods.</string>
+    <string name="login_unsuccessful">Login failed!</string>
+    <string name="data_load_error">Error loading data!</string>
 </resources>

@@ -1,41 +1,63 @@
 package fi.tuni.mobiiliohjelmointi.kuukautisapp.model.dbservice;
 
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.UserData;
+import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.usermanager.UserManagerSingleton;
 
-public class DBServiceImpl implements DBService{
+public class DBServiceImpl implements DBService {
+
     private final DataSource dataSource;
 
     public DBServiceImpl() {
-        this.dataSource = new DataSourceImpl();
+        this.dataSource = new DataSourceFirestoreImpl();
     }
 
     @Override
-    public boolean userExists(String userId) {
-        return this.dataSource.userExists(userId);
+    public void userExists(String userId, DBServiceCallback<Boolean> callback) {
+        this.dataSource.userExists(userId, callback);
     }
 
     @Override
-    public boolean addUser(UserData newUser) {
-        return this.dataSource.saveUserData(newUser);
+    public void addUser(UserData newUser, DBServiceCallback<Boolean> callback) {
+        UserManagerSingleton.getInstance().setUserData(newUser);
+        this.dataSource.saveUserData(newUser, callback);
     }
 
     @Override
-    public UserData loadUser(String userId) {
-        return this.dataSource.getUserData(userId);
+    public void loadUser(String userId, DBServiceCallback<UserData> callback) {
+        this.dataSource.getUserData(userId, new DBServiceCallback<UserData>() {
+            @Override
+            public void onSuccess(UserData userData) {
+                UserManagerSingleton.getInstance().setUserData(userData);
+                callback.onSuccess(userData);
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                callback.onFailure(e);
+            }
+        });
     }
 
     @Override
-    public boolean saveUser(UserData userdata) {
-        return this.dataSource.saveUserData(userdata);
+    public void saveUser(DBServiceCallback<Boolean> callback) {
+        UserData userData = UserManagerSingleton.getInstance().getUserData();
+        if (userData != null) {
+            this.dataSource.saveUserData(userData, callback);
+        }
+        else {
+            callback.onFailure(new Exception("No user data available to save"));
+        }
     }
 
     @Override
-    public boolean deleteUser(String userId) {
-        return this.dataSource.deleteUser(userId);
+    public void deleteUser(String userId, DBServiceCallback<Boolean> callback) {
+        this.dataSource.deleteUser(userId, callback);
     }
 
     @Override
-    public boolean resetUser(String userId) {
-        return this.dataSource.truncateUser(userId);
+    public void resetUser(String userId, DBServiceCallback<Boolean> callback) {
+        this.dataSource.truncateUser(userId, callback);
+        UserManagerSingleton.getInstance().resetUserData();
+        //TODO: handle resetting user in local memory
     }
 }
