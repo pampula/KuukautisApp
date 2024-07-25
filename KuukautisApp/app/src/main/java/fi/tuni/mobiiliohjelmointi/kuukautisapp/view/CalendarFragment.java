@@ -13,8 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.applandeo.materialcalendarview.CalendarDay;
 import com.applandeo.materialcalendarview.CalendarView;
-import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.builders.DatePickerBuilder;
 import com.applandeo.materialcalendarview.listeners.OnSelectDateListener;
 
@@ -28,6 +28,10 @@ import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.cycleservice.CycleService;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.presenter.CalendarContract;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.presenter.CalendarPresenter;
 
+/**
+ * Fragment view for showing an interactable calendar UI.
+ * Uses the Applandeo Material-Calendar-View library.
+ */
 public class CalendarFragment extends Fragment implements View.OnClickListener, CalendarContract.View {
 
     private Context context;
@@ -58,21 +62,23 @@ public class CalendarFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void showCalendarEvents(ArrayList<Date> menstruationDays, ArrayList<Date> predictions) {
-        List<EventDay> events = new ArrayList<>();
+        List<CalendarDay> calendarDays = new ArrayList<>();
 
         for (Date date : menstruationDays) {
             Calendar day = convertDateToCalendar(date);
-            EventDay newMarking = new EventDay(day, R.drawable.circle_flow);
-            events.add(newMarking);
+            CalendarDay newMarking = new CalendarDay(day);
+            newMarking.setImageResource(R.drawable.circle_flow);
+            calendarDays.add(newMarking);
         }
 
         for (Date date : predictions) {
             Calendar day = convertDateToCalendar(date);
-            EventDay newMarking = new EventDay(day, R.drawable.circle_prediction);
-            events.add(newMarking);
+            CalendarDay newMarking = new CalendarDay(day);
+            newMarking.setImageResource(R.drawable.circle_prediction);
+            calendarDays.add(newMarking);
         }
 
-        calendarView.setEvents(events);
+        calendarView.setCalendarDays(calendarDays);
     }
 
     private Calendar convertDateToCalendar(Date date) {
@@ -82,14 +88,14 @@ public class CalendarFragment extends Fragment implements View.OnClickListener, 
     }
 
     private void setOnDayClickListener() {
-        calendarView.setOnDayClickListener(eventDay -> {
-            Date day = eventDay.getCalendar().getTime();
+        calendarView.setOnCalendarDayClickListener(calendarDay -> {
+            Date day = calendarDay.getCalendar().getTime();
 
             if(!presenter.menstrualDayExists(day)) {
                 return;
             }
 
-            Calendar selectedDay = eventDay.getCalendar();
+            Calendar selectedDay = calendarDay.getCalendar();
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             @SuppressLint("DefaultLocale") String message = String.format("%s %d.%d.%d?",
                     getResources().getString(R.string.delete_confirmation),
@@ -121,16 +127,16 @@ public class CalendarFragment extends Fragment implements View.OnClickListener, 
         };
 
         new DatePickerBuilder(getActivity(), listener)
-                .setPickerType(CalendarView.ONE_DAY_PICKER)
-                .setHeaderColor(R.color.brown)
-                .setHeaderLabelColor(R.color.white)
-                .setAbbreviationsBarColor(R.color.beige)
-                .setAbbreviationsLabelsColor(R.color.black)
-                .setPagesColor(R.color.light_beige)
-                .setDaysLabelsColor(R.color.black)
-                .setSelectionColor(R.color.green)
-                .setTodayColor(R.color.green)
-                .setDialogButtonsColor(R.color.brown)
+                .pickerType(CalendarView.ONE_DAY_PICKER)
+                .headerColor(R.color.brown)
+                .headerLabelColor(R.color.white)
+                .abbreviationsBarColor(R.color.beige)
+                .abbreviationsLabelsColor(R.color.black)
+                .pagesColor(R.color.light_beige)
+                .daysLabelsColor(R.color.black)
+                .selectionColor(R.color.green)
+                .todayColor(R.color.green)
+                .dialogButtonsColor(R.color.brown)
                 .build()
                 .show();
     }
