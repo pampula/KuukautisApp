@@ -24,12 +24,34 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
     private RegistrationContract.Presenter presenter;
     private EditText emailEditText;
     private EditText passwordEditText;
+    private EditText passwordConfirmEditText;
     private Button registerButton;
     private ImageButton backButton;
     private Context context;
 
-    private final String EMAIL_REGEX = ".+@.+"; // Contains "@", which has at least one character on each side
-    private final String PASSWORD_REGEX = ".{8,}"; // Is at least eight characters long of any characters
+    /*
+        Email validation rules:
+        Local Part:
+        - Can contain letters (a-z, A-Z), digits (0-9), and certain special characters (., _, %, +, -).
+        - Can't start or end with a dot (.).
+        - Consecutive dots (..) are not allowed.
+
+        @ Symbol:
+        - Must contain exactly one @ symbol separating the local part and the domain part.
+
+        Domain Part:
+        - Can contain letters, digits, hyphens (-), and dots (.).
+        - Must have at least one dot, separating the domain name and the top-level domain.
+        - The portion after the last dot must be at least two letters long (e.g., .com, .org, .fi).
+     */
+    private final String EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+
+    /*
+        Password validation rules:
+        - Is at least eight characters long of any characters
+
+     */
+    private final String PASSWORD_REGEX = ".{8,}";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +60,7 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
 
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
+        passwordConfirmEditText = findViewById(R.id.confirmPasswordEditText);
         registerButton = findViewById(R.id.registerButton);
         backButton = findViewById(R.id.btn_back);
 
@@ -53,8 +76,9 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
         registerButton.setOnClickListener(v -> {
             String email = emailEditText.getText().toString();
             String password = passwordEditText.getText().toString();
+            String confirmedPassword = passwordConfirmEditText.getText().toString();
 
-            if (email.isEmpty() || password.isEmpty()) {
+            if (email.isEmpty() || password.isEmpty() || confirmedPassword.isEmpty()) {
                 Toast.makeText(context, R.string.missing_fields, Toast.LENGTH_LONG).show();
                 return;
             }
@@ -64,9 +88,14 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
                 return;
             }
 
-            // TODO: define better password requirements
             if (!isValidPassword(password)) {
                 Toast.makeText(context, R.string.invalid_password
+                        , Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            if (!password.equals(confirmedPassword)) {
+                Toast.makeText(context, R.string.password_not_match
                         , Toast.LENGTH_LONG).show();
                 return;
             }
