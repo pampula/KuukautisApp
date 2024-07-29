@@ -41,16 +41,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="30dp"
-                android:layout_marginBottom="24dp"
                 android:text="@string/registration"
                 android:textSize="24sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/emailLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="25dp"
+                android:layout_gravity="start"
+                android:text="@string/email"/>
 
             <EditText
                 android:id="@+id/emailEditText"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_marginBottom="20dp"
                 android:autofillHints="emailAddress"
                 android:background="@drawable/edit_text_background"
                 android:hint="@string/email"
@@ -58,11 +66,20 @@
                 android:textColor="@color/black"
                 android:minHeight="48dp" />
 
+            <TextView
+                android:id="@+id/passwordLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="25dp"
+                android:layout_gravity="start"
+                android:text="@string/password"/>
+
             <EditText
                 android:id="@+id/passwordEditText"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/edit_text_background"
                 android:hint="@string/password"
                 android:importantForAutofill="no"
@@ -70,11 +87,20 @@
                 android:textColor="@color/black"
                 android:minHeight="48dp" />
 
+            <TextView
+                android:id="@+id/passwordConfirmLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="25dp"
+                android:layout_gravity="start"
+                android:text="@string/confirm_password"/>
+
             <EditText
                 android:id="@+id/confirmPasswordEditText"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/edit_text_background"
                 android:hint="@string/confirm_password"
                 android:importantForAutofill="no"
