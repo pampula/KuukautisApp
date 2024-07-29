@@ -62,4 +62,5 @@
     <string name="back">Takaisin</string>
     <string name="login_unsuccessful">Kirjautuminen epäonnistui!</string>
     <string name="data_load_error">Virhe tietojen latauksessa!</string>
+    <string name="confirm_password">Vahvista salasana</string>
 </resources>

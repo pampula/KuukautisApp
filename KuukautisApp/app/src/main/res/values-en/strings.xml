@@ -4,7 +4,7 @@
     <string name="registration">Registration</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="register">Register</string>
+    <string name="register">Create account</string>
     <string name="login">Login</string>
     <string name="missing_fields">Fill all fields!</string>
     <string name="invalid_email">Email is not valid!</string>
@@ -63,4 +63,5 @@
     <string name="material_calendar_negative_button">Cancel</string>
     <string name="login_unsuccessful">Login failed!</string>
     <string name="data_load_error">Error loading data!</string>
+    <string name="confirm_password">Confirm password</string>
 </resources>
