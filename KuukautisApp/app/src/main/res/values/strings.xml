@@ -63,4 +63,5 @@
     <string name="login_unsuccessful">Kirjautuminen epäonnistui!</string>
     <string name="data_load_error">Virhe tietojen latauksessa!</string>
     <string name="confirm_password">Vahvista salasana</string>
+    <string name="password_not_match">Salasana ei täsmää!</string>
 </resources>
