@@ -115,6 +115,7 @@
                 android:layout_margin="20dp"
                 android:background="@drawable/button_background"
                 android:text="@string/register" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
