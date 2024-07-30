@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
-        android:background="@drawable/rounded_corners"
+        android:background="@drawable/brown_rounded_corners"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btn_new_entry"
         app:layout_constraintStart_toStartOf="parent"
