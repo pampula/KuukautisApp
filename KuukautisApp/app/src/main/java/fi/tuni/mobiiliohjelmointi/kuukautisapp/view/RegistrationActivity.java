@@ -74,8 +74,8 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
         });
 
         registerButton.setOnClickListener(v -> {
-            String email = emailEditText.getText().toString();
-            String password = passwordEditText.getText().toString();
+            String email = emailEditText.getText().toString().trim();
+            String password = passwordEditText.getText().toString().trim();
             String confirmedPassword = passwordConfirmEditText.getText().toString();
 
             if (email.isEmpty() || password.isEmpty() || confirmedPassword.isEmpty()) {

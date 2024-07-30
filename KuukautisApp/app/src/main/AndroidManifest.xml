@@ -33,6 +33,11 @@
             android:name=".view.LoginActivity"
             android:exported="true" />
 
+        <activity
+            android:name=".view.PasswordResetActivity"
+            android:exported="true" />
+
+
     </application>
 
 </manifest>
