@@ -25,9 +25,8 @@
         android:id="@+id/app_info_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:text="@string/general_app_info"
         android:textColor="@color/black"/>
 
@@ -35,69 +34,58 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:text="@string/info_text_deleting"
         android:textColor="@color/black"/>
 
     <LinearLayout
-        android:id="@+id/layout_icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_margin="16dp">
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <ImageView
+            android:id="@+id/flow_circle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="@string/flow_circle_description"
+            app:srcCompat="@drawable/circle_flow" />
+
+        <TextView
+            android:id="@+id/flow_circle_description"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/flow_circle"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:contentDescription="@string/flow_circle_description"
-                app:srcCompat="@drawable/circle_flow" />
-
-            <TextView
-                android:id="@+id/flow_circle_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:text="@string/flow_circle_description"
-                android:textAlignment="center"
-                android:textColor="@color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/prediction_circle"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:contentDescription="@string/prediction_circle_description"
-                app:srcCompat="@drawable/circle_prediction" />
-
-            <TextView
-                android:id="@+id/prediction_circle_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:text="@string/prediction_circle_description"
-                android:textAlignment="center"
-                android:textColor="@color/black" />
-        </LinearLayout>
+            android:layout_marginHorizontal="8dp"
+            android:layout_gravity="center"
+            android:text="@string/flow_circle_description"
+            android:textColor="@color/black" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/prediction_circle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="@string/prediction_circle_description"
+            app:srcCompat="@drawable/circle_prediction" />
+
+        <TextView
+            android:id="@+id/prediction_circle_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_gravity="center"
+            android:text="@string/prediction_circle_description"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
 
 </LinearLayout>
