@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.R;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.AuthService;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.AuthServiceFirebaseImpl;
-import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.UserLoginSingleton;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.cycleservice.CycleService;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.cycleservice.CycleServiceImpl;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.CycleData;
@@ -31,8 +29,9 @@ import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.dbservice.DBServiceImpl;
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Dialog infoDialog;
     private ImageButton infoBtn;
+    private ImageButton logoutBtn;
+
     private CycleService cycleService;
     private DBService dbService;
     private AuthService authService;
@@ -50,17 +49,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         userId = authService.getCurrentUserId();
         if (userId != null && !userId.isEmpty()) {
-            Log.d("MAIN", "Loading current user, id: " + userId);
             loadUserData(userId);
         }
         else {
-            Log.d("MAIN", "userId is null or empty, redirecting to start");
             redirectToStartScreen();
         }
 
-        infoDialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar);
         infoBtn = findViewById(R.id.btn_info);
         infoBtn.setOnClickListener(this);
+        logoutBtn = findViewById(R.id.btn_logout);
+        logoutBtn.setOnClickListener(this);
     }
 
     /**
@@ -120,18 +118,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * Handles UI button clicks.
-     * @param view view that has the activated button
+     * @param view activated button
      */
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_info) {
             deployInfoDialog();
         }
+        else if (view.getId() == R.id.btn_logout) {
+            saveAndLogout();
+            redirectToStartScreen();
+        }
     }
 
     /**
-     * Opens a welcome pop up window for app information. Is shown to the user only on the first time
-     * the app is used.
+     * Opens a welcome pop up window for app information.
      */
     private void deployWelcomeDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -145,27 +146,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void deployInfoDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        String infoMessage = String.format("%s\n\n%s\n\n%s",
-                getResources().getString(R.string.info_text_markings),
-                getResources().getString(R.string.info_text_deleting),
-                getResources().getString(R.string.info_text_averages)
-                );
-        builder.setMessage(infoMessage)
+        builder.setView(R.layout.dialog_info)
                 .setNeutralButton(getResources().getString(R.string.close), (dialog, id) -> dialog.dismiss());
         builder.show();
     }
 
     /**
-     * Saves user data when app is stopped.
+     * Saves the user data and logs the user out.
      */
-    @Override
-    protected void onStop() {
-        super.onStop();
-
+    private void saveAndLogout() {
         dbService.saveUser(new DBService.DBServiceCallback<Boolean>() {
             @Override
             public void onSuccess(Boolean result) {
-                Log.i("SAVING", "User saved");
             }
 
             @Override
@@ -185,5 +177,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.e("LOGOUT", String.valueOf(e));
             }
         });
+    }
+
+    /**
+     * Saves user data when app is stopped.
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        saveAndLogout();
     }
 }

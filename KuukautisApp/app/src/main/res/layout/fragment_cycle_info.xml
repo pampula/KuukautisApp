@@ -2,13 +2,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
+
         <TextView
             android:id="@+id/cycle_length_avg_label"
             android:layout_width="wrap_content"
@@ -19,7 +20,9 @@
             android:id="@+id/cycle_length_avg_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/placeholder_value" />
+            android:text="@string/placeholder_value"
+            android:textColor="@color/brown_red"
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <LinearLayout
@@ -27,6 +30,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
+
         <TextView
             android:id="@+id/flow_length_avg_label"
             android:layout_width="wrap_content"
@@ -37,7 +41,9 @@
             android:id="@+id/flow_length_avg_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/placeholder_value" />
+            android:text="@string/placeholder_value"
+            android:textColor="@color/brown_red"
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <LinearLayout
@@ -45,6 +51,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
+
         <TextView
             android:id="@+id/next_flow_label"
             android:layout_width="wrap_content"
@@ -55,7 +62,9 @@
             android:id="@+id/next_flow_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/placeholder_value" />
+            android:text="@string/placeholder_value"
+            android:textColor="@color/green"
+            android:textStyle="bold"/>
     </LinearLayout>
 
 </LinearLayout>

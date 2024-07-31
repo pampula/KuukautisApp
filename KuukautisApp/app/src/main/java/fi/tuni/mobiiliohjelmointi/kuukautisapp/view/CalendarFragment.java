@@ -128,15 +128,16 @@ public class CalendarFragment extends Fragment implements View.OnClickListener, 
 
         new DatePickerBuilder(getActivity(), listener)
                 .pickerType(CalendarView.ONE_DAY_PICKER)
-                .headerColor(R.color.brown)
+                .headerColor(R.color.dark_green)
                 .headerLabelColor(R.color.white)
-                .abbreviationsBarColor(R.color.beige)
-                .abbreviationsLabelsColor(R.color.black)
-                .pagesColor(R.color.light_beige)
+                .abbreviationsBarColor(R.color.dark_green)
+                .abbreviationsLabelsColor(R.color.white)
+                .pagesColor(R.color.white)
                 .daysLabelsColor(R.color.black)
-                .selectionColor(R.color.green)
-                .todayColor(R.color.green)
-                .dialogButtonsColor(R.color.brown)
+                .selectionColor(R.color.brown_red)
+                .todayColor(R.color.light_beige)
+                .todayLabelColor(R.color.dark_green)
+                .dialogButtonsColor(R.color.dark_green)
                 .build()
                 .show();
     }

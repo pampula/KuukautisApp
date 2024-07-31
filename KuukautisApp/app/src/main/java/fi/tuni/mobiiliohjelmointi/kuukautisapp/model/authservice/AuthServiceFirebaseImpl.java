@@ -1,7 +1,5 @@
 package fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice;
 
-import android.util.Log;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -19,12 +17,10 @@ public class AuthServiceFirebaseImpl implements AuthService {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser firebaseUser = auth.getCurrentUser();
-                        Log.d("AUTH", "User creation success, current user: " + firebaseUser);
 
                         if (firebaseUser != null) {
                             String userId = firebaseUser.getUid();
                             UserLoginSingleton.getInstance().loginUser(userId);
-                            Log.d("AUTH", "User status set as logged in!");
                             callback.onSuccess(userId);
                         }
                         else {
