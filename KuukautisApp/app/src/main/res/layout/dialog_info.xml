@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_main"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/info_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="center"
+        android:text="@string/info_title"
+        android:textColor="@color/brown"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/flow_circle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="@string/flow_circle_description"
+            app:srcCompat="@drawable/circle_flow" />
+
+        <TextView
+            android:id="@+id/flow_circle_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_gravity="center"
+            android:text="@string/flow_circle_description"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/prediction_circle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="@string/prediction_circle_description"
+            app:srcCompat="@drawable/circle_prediction" />
+
+        <TextView
+            android:id="@+id/prediction_circle_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_gravity="center"
+            android:text="@string/prediction_circle_description"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/deletion_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/info_text_deleting"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/creator_info_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="center"
+        android:text="@string/creator_info_title"
+        android:textColor="@color/brown"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/developer_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:text="@string/developer_info"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/background_img_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:text="@string/start_img_creator"
+        android:textColor="@color/black"/>
+
+
+</LinearLayout>

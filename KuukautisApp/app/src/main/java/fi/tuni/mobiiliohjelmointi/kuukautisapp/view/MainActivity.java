@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,7 +29,6 @@ import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.dbservice.DBServiceImpl;
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Dialog infoDialog;
     private ImageButton infoBtn;
     private ImageButton logoutBtn;
 
@@ -59,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             redirectToStartScreen();
         }
 
-        infoDialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar);
         infoBtn = findViewById(R.id.btn_info);
         infoBtn.setOnClickListener(this);
         logoutBtn = findViewById(R.id.btn_logout);
@@ -151,12 +148,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void deployInfoDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        String infoMessage = String.format("%s\n\n%s\n\n%s",
-                getResources().getString(R.string.info_text_markings),
-                getResources().getString(R.string.info_text_deleting),
-                getResources().getString(R.string.info_text_averages)
-                );
-        builder.setMessage(infoMessage)
+        builder.setView(R.layout.dialog_info)
                 .setNeutralButton(getResources().getString(R.string.close), (dialog, id) -> dialog.dismiss());
         builder.show();
     }

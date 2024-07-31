@@ -11,8 +11,8 @@
 
     <string name="welcome_message">Tervetuloa käyttämään KuukautisAppia!</string>
     <string name="flow_circle_description">Kirjattu kuukautispäivä</string>
-    <string name="prediction_circle_description">Seuraavien kuukautisten ennustettu alkamispäivä</string>
-    <string name="general_app_info">Sovelluksella voit seurata kuukautiskiertoasi ja ennakoida tulevia kiertoja. Kuukautisvuotopäiviä kirjataan kalenteriin, minkä perusteella sovellus generoi statistiikkaa ja ennusteen.</string>
+    <string name="prediction_circle_description">Seuraavien kuukautisten alkamispäivä</string>
+    <string name="general_app_info">Sovelluksella voit seurata kuukautiskiertoasi ja ennakoida tulevia kiertoja. Kuukautisvuotopäiviä kirjataan kalenteriin, minkä perusteella sovellus generoi statistiikkaa ja ennusteita.</string>
 
     <string name="new_entry">Lisää merkintä</string>
     <string name="info_btn">Info</string>
@@ -67,4 +67,8 @@
     <string name="email_password_reset">Sähköpostiviesti lähetetty salasanan resetoimiseen!</string>
     <string name="email_password_reset_fail">Virhe resetointiviestin lähettämisessä!</string>
     <string name="background_img_description">Kukkaniitty</string>
+    <string name="info_title">Sovellustiedot</string>
+    <string name="developer_info">Sovelluksen kehittäjä: Eveliina Sundberg</string>
+    <string name="start_img_creator">Aloitusnäkymän taustakuva: A field full of white flowers on a sunny day, Annie Spratt</string>
+    <string name="creator_info_title">Tekijätiedot</string>
 </resources>
