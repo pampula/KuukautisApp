@@ -17,7 +17,6 @@ import android.widget.Toast;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.R;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.AuthService;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.AuthServiceFirebaseImpl;
-import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.authservice.UserLoginSingleton;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.cycleservice.CycleService;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.cycleservice.CycleServiceImpl;
 import fi.tuni.mobiiliohjelmointi.kuukautisapp.model.datamodels.CycleData;
@@ -33,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Dialog infoDialog;
     private ImageButton infoBtn;
+    private ImageButton logoutBtn;
+
     private CycleService cycleService;
     private DBService dbService;
     private AuthService authService;
@@ -61,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         infoDialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar);
         infoBtn = findViewById(R.id.btn_info);
         infoBtn.setOnClickListener(this);
+        logoutBtn = findViewById(R.id.btn_logout);
+        logoutBtn.setOnClickListener(this);
     }
 
     /**
@@ -120,12 +123,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * Handles UI button clicks.
-     * @param view view that has the activated button
+     * @param view activated button
      */
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_info) {
             deployInfoDialog();
+        }
+        else if (view.getId() == R.id.btn_logout) {
+            saveAndLogout();
+            redirectToStartScreen();
         }
     }
 
@@ -156,12 +163,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * Saves user data when app is stopped.
+     * Saves the user data and logs the user out.
      */
-    @Override
-    protected void onStop() {
-        super.onStop();
-
+    private void saveAndLogout() {
         dbService.saveUser(new DBService.DBServiceCallback<Boolean>() {
             @Override
             public void onSuccess(Boolean result) {
@@ -185,5 +189,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.e("LOGOUT", String.valueOf(e));
             }
         });
+    }
+
+    /**
+     * Saves user data when app is stopped.
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        saveAndLogout();
     }
 }
