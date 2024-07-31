@@ -49,11 +49,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         userId = authService.getCurrentUserId();
         if (userId != null && !userId.isEmpty()) {
-            Log.d("MAIN", "Loading current user, id: " + userId);
             loadUserData(userId);
         }
         else {
-            Log.d("MAIN", "userId is null or empty, redirecting to start");
             redirectToStartScreen();
         }
 
@@ -160,7 +158,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dbService.saveUser(new DBService.DBServiceCallback<Boolean>() {
             @Override
             public void onSuccess(Boolean result) {
-                Log.i("SAVING", "User saved");
             }
 
             @Override
