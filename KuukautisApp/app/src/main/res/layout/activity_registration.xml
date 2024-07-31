@@ -14,7 +14,7 @@
         android:layout_margin="16dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/back"
-        android:src="@drawable/back_foreground"
+        android:src="@drawable/back_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

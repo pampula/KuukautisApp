@@ -18,7 +18,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_gravity="start"
-            android:src="@drawable/back_foreground"
+            android:src="@drawable/back_icon"
             android:background="@android:color/transparent"
             android:contentDescription="@string/log_out" />
 
@@ -36,7 +36,7 @@
             android:layout_gravity="end"
             android:background="@android:color/transparent"
             android:contentDescription="@string/info_btn"
-            android:src="@drawable/info_icon_foreground" />
+            android:src="@drawable/info_icon" />
     </LinearLayout>
 
     <FrameLayout
