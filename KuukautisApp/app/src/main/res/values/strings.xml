@@ -10,14 +10,13 @@
     <string name="invalid_password">Salasanassa pitää olla ainakin 8 merkkiä!</string>
 
     <string name="welcome_message">Tervetuloa käyttämään KuukautisAppia!</string>
-    <string name="flow_circle_description">Kirjattu kuukautisten vuotopäivä</string>
-    <string name="prediction_circle_description">Seuraavan kuukautisvuodon ennustettu alkamispäivä</string>
-    <string name="general_app_info">Sovelluksella voit seurata kuukautiskiertoasi ja ennustaa seuraavan kierron alkamispäivän. Kuukautisvuotopäiviä kirjataan kalenteriin, minkä perusteella sovellus generoi statistiikkaa ja ennusteen kuukautisten käyttäytymisestä.</string>
+    <string name="flow_circle_description">Kirjattu kuukautispäivä</string>
+    <string name="prediction_circle_description">Seuraavien kuukautisten ennustettu alkamispäivä</string>
+    <string name="general_app_info">Sovelluksella voit seurata kuukautiskiertoasi ja ennakoida tulevia kiertoja. Kuukautisvuotopäiviä kirjataan kalenteriin, minkä perusteella sovellus generoi statistiikkaa ja ennusteen.</string>
 
     <string name="new_entry">Lisää merkintä</string>
     <string name="info_btn">Info</string>
     <string name="close">Sulje</string>
-    <string name="info_text_markings">Kalenterin punaiset merkinnät edustavat lisättyjä vuotopäiviä. Sininen merkintä on seuraavan kuukautisvuodon ennustettu alkamispäivä, joka perustuu edellisiin kuukautisiin.</string>
     <string name="cycle_length_text">Kierron kesto:</string>
     <string name="placeholder_value">Ei saatavilla</string>
     <string name="flow_length">Vuodon kesto:</string>
@@ -28,8 +27,7 @@
     <string name="delete_confirmation">Haluatko poistaa merkinnän päivältä</string>
     <string name="delete">Poista</string>
     <string name="cancel">Peruuta</string>
-    <string name="info_text_averages">Generoitu kuukautiskierron pituus ja vuodon kesto ovat keskiarvoja kolmen viimeisen täyden kiertojakson ajalta.</string>
-    <string name="info_text_deleting">Kalenterimerkinnän voi poistaa klikkaamalla sitä. Tällä hetkellä voi poistaa vain viimeisimmän merkinnän.</string>
+    <string name="info_text_deleting">Kalenterimerkinnän voi poistaa klikkaamalla sitä.</string>
 
     <string name="material_calendar_monday">M</string>
     <string name="material_calendar_tuesday">T</string>

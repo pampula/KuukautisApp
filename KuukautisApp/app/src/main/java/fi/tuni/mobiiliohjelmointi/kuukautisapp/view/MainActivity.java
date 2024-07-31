@@ -137,8 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * Opens a welcome pop up window for app information. Is shown to the user only on the first time
-     * the app is used.
+     * Opens a welcome pop up window for app information.
      */
     private void deployWelcomeDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

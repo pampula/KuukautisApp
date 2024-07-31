@@ -14,14 +14,13 @@
     <string name="back">Back</string>
 
     <string name="welcome_message">Welcome to MenstrualApp!</string>
-    <string name="flow_circle_description">Logged period flow day</string>
-    <string name="prediction_circle_description">Predicted date for the start of the next menstrual flow</string>
-    <string name="general_app_info">With the app, you can follow your periods and predict the start of the next menstrual flow. Flow days are logged into a calendar, from which the app generates statistics and a prediction on the periods.</string>
+    <string name="flow_circle_description">Logged period day</string>
+    <string name="prediction_circle_description">Predicted date for the next period</string>
+    <string name="general_app_info">With the app, you can follow your periods and predict upcoming menstruations. Menstrual flow days are logged into a calendar, from which the app generates statistics and a predictions.</string>
 
     <string name="new_entry">New entry</string>
     <string name="info_btn">Info</string>
     <string name="close">Close</string>
-    <string name="info_text_markings">The red markings in the calendar represent logged flow days. The blue marking is the prediction for the start of the next menstrual flow, which is calculated based on previous cycles.</string>
     <string name="cycle_length_text">Cycle length:</string>
     <string name="placeholder_value">Not available</string>
     <string name="flow_length">Flow length:</string>
@@ -32,8 +31,7 @@
     <string name="delete_confirmation">Do you want to remove marking on</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
-    <string name="info_text_averages">The length of the menstrual cycle and the duration of the flow are averages for the last three full months.</string>
-    <string name="info_text_deleting">A calendar marking can be removed by clicking it. At the moment, only the most recent marking can be removed.</string>
+    <string name="info_text_deleting">A calendar marking can be removed by clicking it.</string>
 
     <string name="material_calendar_monday">M</string>
     <string name="material_calendar_tuesday">T</string>
