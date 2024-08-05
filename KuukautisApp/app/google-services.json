@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "57549498744",
+    "project_id": "kuukautisapp",
+    "storage_bucket": "kuukautisapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57549498744:android:1505325417c21e722f808d",
+        "android_client_info": {
+          "package_name": "fi.tuni.mobiiliohjelmointi.kuukautisapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57549498744-76jb5htoaiq22u0p7rvvbghfn0kji45v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVp6l8ODGrTtt_s_8Uuj4fBVv-tuAoNpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "57549498744-76jb5htoaiq22u0p7rvvbghfn0kji45v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

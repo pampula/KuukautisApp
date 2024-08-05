@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".view.CalendarFragment">
+
+    <FrameLayout
+        android:id="@+id/layout_calendar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/brown_rounded_corners">
+
+        <com.applandeo.materialcalendarview.CalendarView
+            android:id="@+id/calendar_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:clickable="false"
+            android:datePickerMode="spinner"
+            android:focusable="false"
+            app:abbreviationsBarColor="@color/brown"
+            app:abbreviationsLabelsColor="@color/white"
+            app:anotherMonthsDaysLabelsColor="@color/beige"
+            app:daysLabelsColor="@color/white"
+            app:headerColor="@color/brown"
+            app:headerLabelColor="@color/white"
+            app:pagesColor="@color/brown"
+            app:firstDayOfWeek="monday"
+            app:todayLabelColor="@color/lime_green"
+            app:todayTypeface="@font/opensans_extrabold"/>
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btn_new_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="16dp"
+        android:text="@string/new_entry"
+        android:textAllCaps="false"
+        android:background="@drawable/button_background"/>
+</LinearLayout>
