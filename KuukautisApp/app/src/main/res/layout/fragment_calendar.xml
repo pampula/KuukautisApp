@@ -32,6 +32,7 @@
             app:headerColor="@color/brown"
             app:headerLabelColor="@color/white"
             app:pagesColor="@color/brown"
+            app:firstDayOfWeek="monday"
             app:todayLabelColor="@color/lime_green"
             app:todayTypeface="@font/opensans_extrabold"/>
     </FrameLayout>
